@@ -1,4 +1,3 @@
-const API_KEY = "179278cad4da9e443fa42537ab7d2924";
 const BASE_URL = "https://api.themoviedb.org/3";
 const API_URL = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=pt-BR&page=1`;
 const SEARCH_API = `${BASE_URL}/search/movie?api_key=${API_KEY}&language=pt-BR&query=`;

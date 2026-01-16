@@ -1,0 +1,1156 @@
+:root {
+    --bg-dark: #0F172A;
+    --card-bg: #1E293B;
+    --gold: #FFD700;
+    --gold-glow: rgba(255, 215, 0, 0.5);
+    --blue-neon: #38bdf8;
+    --blue-glow: rgba(56, 189, 248, 0.5);
+    --text-white: #F8FAFC;
+    --text-gray: #94a3b8;
+    --glass: rgba(30, 41, 59, 0.7);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-white);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Fundo com gradiente suave fixo */
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% -20%, #1e293b 0%, #0f172a 70%);
+    z-index: -1;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    text-align: center;
+    padding: 4rem 1.5rem;
+    position: relative;
+}
+
+.logo-neon {
+    font-size: 6rem;
+    font-weight: 900;
+    letter-spacing: -3px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+    user-select: none;
+}
+
+.logo-neon a {
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+    border: none;          /* Remove bordas, caso a linha colorida seja uma borda */
+    outline: none;         /* Remove contorno ao clicar */
+}
+
+
+
+.gold-part {
+    color: var(--gold);
+    text-shadow: 0 0 20px var(--gold-glow);
+}
+
+.blue-part {
+    color: #fff;
+    text-shadow:
+        0 0 10px var(--blue-neon),
+        0 0 40px var(--blue-neon),
+        0 0 80px var(--blue-neon);
+}
+
+.neon-off {
+    opacity: 0.1 !important;
+    text-shadow: none !important;
+    color: #475569 !important;
+}
+
+.tagline {
+    color: var(--text-gray);
+    letter-spacing: 4px;
+    font-size: 0.85rem;
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+/* --- SEARCH BAR MODERNA --- */
+.search-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    
+}
+
+.search-bar:focus-within {
+    border-color: var(--blue-neon);
+    box-shadow: 0 0 20px var(--blue-glow);
+    transform: scale(1.02);
+}
+
+.search-icon {
+    color: var(--text-gray);
+    margin-left: 10px;
+}
+
+#search {
+    background: transparent;
+    border: none;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 1rem;
+    flex-grow: 1;
+    outline: none;
+    font-family: inherit;
+}
+
+#search::placeholder {
+    color: #64748b;
+}
+
+/* --- ÁREA DE FILTROS E SELECT --- */
+.filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.select-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    padding: 0 10px;
+    transition: 0.3s;
+}
+
+.select-wrapper:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* O seletor principal */
+.filter-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background: transparent;
+    border: none;
+    
+
+    color-scheme: dark;
+
+    color: var(--text-white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    outline: none;
+
+    padding: 10px 30px 10px 15px;
+    font-weight: 500;
+    width: 100%;
+}
+
+/* Estilizando as opções internas */
+.filter-select option {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: 'Outfit', sans-serif;
+    
+}
+
+/* Tenta customizar a scrollbar no Chrome/Safari (Funciona em alguns navegadores no select aberto) */
+.filter-select::-webkit-scrollbar {
+    width: 8px;
+    background: #0f172a;
+}
+
+.filter-select::-webkit-scrollbar-thumb {
+    background-color: var(--blue-neon);
+    border-radius: 4px;
+}
+
+/* Ícone da seta customizada */
+.arrow-icon {
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    /* Deixa clicar "através" do ícone */
+    font-size: 1.2rem;
+    color: var(--blue-neon);
+    /* Mudei para azul neon para destacar */
+}
+
+/* Botão de busca */
+.search-btn {
+    background: var(--blue-neon);
+    border: none;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    /* Garante que o botão não amasse */
+}
+
+.search-btn:hover {
+    background: var(--gold);
+    transform: rotate(-45deg);
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+/* --- CONTEÚDO --- */
+.content-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-header h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.title-highlight {
+    color: var(--gold);
+    font-weight: 300;
+}
+
+.nav-arrows {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: var(--blue-neon);
+    color: var(--bg-dark);
+}
+
+/* --- GRID E CARDS (ESTILO IMERSIVO) --- */
+
+.movie-grid {
+    display: grid;
+    /* Grid responsivo que se ajusta automaticamente */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding-bottom: 3rem;
+}
+
+.movie-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    /* O que estiver fora da borda some */
+    aspect-ratio: 2/3;
+    /* Força o formato retangular de pôster */
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    background-color: var(--card-bg);
+    /* Fundo caso a img falhe */
+}
+
+/* Efeito de "Levitar" o card inteiro */
+.movie-card:hover {
+    transform: scale(1.05);
+    /* Cresce levemente */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    /* Fica acima dos vizinhos */
+    border: 1px solid var(--gold);
+    /* Borda dourada sutil */
+}
+
+/* --- Container da Imagem (Fundo do Card) --- */
+.poster-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.poster-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s;
+}
+
+/* Escurece a imagem levemente no hover para o texto ler melhor */
+.movie-card:hover .poster-container img {
+    filter: brightness(0.6);
+}
+
+/* --- Nota (Badge) --- */
+.rating-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    color: var(--gold);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.star-icon {
+    font-size: 14px;
+}
+
+/* --- Botão de Play (Centralizado) --- */
+.overlay {
+    position: absolute;
+    inset: 0;
+    /* Ocupa todo o card */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    /* Invisível inicialmente */
+    transition: opacity 0.3s ease;
+    z-index: 4;
+}
+
+/* Aparece o play no hover */
+.movie-card:hover .overlay {
+    opacity: 1;
+}
+
+.play-btn {
+    background: var(--gold);
+    color: var(--bg-dark);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 20px var(--gold-glow);
+    transform: scale(0.8);
+    transition: transform 0.2s;
+}
+
+.movie-card:hover .play-btn {
+    transform: scale(1);
+    /* Animação de pop */
+}
+
+/* --- Informações do Filme (Deslizam de baixo) --- */
+.movie-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px;
+
+    /* Gradiente para o texto ficar legível sobre a imagem */
+    background: linear-gradient(to top, rgba(15, 23, 42, 1) 10%, rgba(15, 23, 42, 0.8) 50%, transparent 100%);
+
+    transform: translateY(110%);
+    /* Fica ESCONDIDO para baixo (100% + folga) */
+    transition: transform 0.3s ease-in-out;
+    z-index: 5;
+}
+
+/* No hover, as infos sobem */
+.movie-card:hover .movie-info {
+    transform: translateY(0);
+}
+
+.movie-info h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    /* Usa o dourado para destacar o título */
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+    /* Letras levemente mais juntas (moderno) */
+
+    /* Garante que fique em uma linha só com ... no final */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+    /* Cinza claro */
+}
+
+.badge-lang {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+
+
+/* O Botão de Sorteio */
+.shuffle-btn {
+    background: transparent;
+    border: 1px solid var(--text-gray);
+    color: var(--text-gray);
+    padding: 8px 16px;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.shuffle-btn .material-icons-round {
+    font-size: 1.2rem;
+    transition: transform 0.5s ease; /* Animação do ícone */
+}
+
+/* Efeito Hover (Passar o mouse) */
+.shuffle-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(255, 215, 0, 0.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Faz o ícone girar ao passar o mouse */
+.shuffle-btn:hover .spin-icon {
+    transform: rotate(180deg);
+}
+
+/* Clique (Efeito de pressionar) */
+.shuffle-btn:active {
+    transform: scale(0.95);
+}
+
+/* Container de Ações (O Carrossel) */
+.section-header-action {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    position: relative;
+    /* Removemos o overflow: hidden do pai para garantir que o wrapper filho controle isso */
+}
+
+.genre-carousel-wrapper {
+    flex-grow: 1;
+    overflow: hidden; /* Esconde o que sai da tela */
+    position: relative;
+    height: 50px; /* Altura fixa para garantir a área do mouse */
+    display: flex;
+    align-items: center;
+    
+    /* Máscara suave nas pontas para indicar que há mais conteúdo */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+.genre-track {
+    display: flex;
+    gap: 12px;
+    position: absolute; /* Absoluto para movermos via Left/Transform */
+    left: 0;
+    transition: transform 0.1s linear; /* Suavidade leve */
+    will-change: transform;
+    padding: 0 40px; /* Um respiro nas pontas */
+}
+
+.genre-track:hover {
+    animation-play-state: paused;
+}
+/* Esconde Scrollbar no Chrome/Safari/Opera */
+.section-header-action::-webkit-scrollbar {
+    display: none;
+}
+
+/* Os botões dentro do carrossel */
+.genre-quick-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-gray);
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    user-select: none; /* Impede selecionar texto ao arrastar */
+}
+
+.genre-quick-btn:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+/* A Animação Keyframe */
+
+
+/* --- ESTILO DO MODAL (POP-UP) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Fundo escuro atrás */
+    backdrop-filter: blur(8px); /* Desfoque no fundo */
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+/* Quando o modal está ativo */
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-dark);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 20px;
+    overflow: hidden; /* Para a imagem não sair das bordas */
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    max-height: 90vh; /* Se a tela for pequena, permite scroll */
+    overflow-y: auto;
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px; /* Largura fina e elegante */
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3); /* Fundo bem escuro e transparente */
+    margin: 10px 0; /* Um pequeno espaço nas pontas para não colar */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #444; /* Um cinza discreto quando parada */
+    border-radius: 20px;    /* Borda bem redonda */
+    border: 2px solid transparent; /* Truque para a barra não ficar "gorda" demais */
+    background-clip: content-box;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background-color: var(--gold); /* Fica DOURADA quando interage */
+    scrollbar-width: thin;
+}
+
+
+/* Botão de Fechar (X) */
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.2s;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    background: var(--gold);
+    color: black;
+}
+
+/* Header com Imagem de Fundo (Backdrop) */
+.modal-header-img {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+/* Degradê para misturar a imagem com o conteúdo */
+.modal-header-img::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, var(--bg-dark), transparent);
+}
+
+/* Poster Pequeno flutuando */
+.modal-poster-wrapper {
+    position: absolute;
+    bottom: -160px;
+    left: 40px;
+    width: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    z-index: 10;
+    border: 3px solid rgba(255,255,255,0.2);
+}
+
+.modal-poster-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Corpo do Texto */
+.modal-body {
+    padding: 180px 40px 40px; 
+    position: relative;
+}
+
+.modal-body h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--text-white);
+}
+
+.modal-meta-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-badge {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: var(--gold);
+    color: black;
+}
+
+.modal-badge.outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: var(--text-gray);
+}
+
+.modal-tagline {
+    color: var(--blue-neon);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.modal-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    border-left: 3px solid var(--gold);
+    padding-left: 10px;
+}
+
+.modal-desc {
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.modal-btn-action {
+    background: var(--blue-neon);
+    color: black;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.modal-btn-action:hover {
+    background: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+}
+
+/* --- PAGINAÇÃO --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.page-btn {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%; /* Botões redondos */
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-btn:hover {
+    border-color: var(--blue-neon);
+    color: var(--blue-neon);
+    background: rgba(56, 189, 248, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 0 10px var(--blue-glow);
+}
+
+/* Estilo da página ATIVA (onde o usuário está) */
+.page-btn.active {
+    background: var(--gold);
+    color: var(--bg-dark);
+    border-color: var(--gold);
+    box-shadow: 0 0 15px var(--gold-glow);
+    font-weight: 900;
+    transform: scale(1.1);
+}
+
+/* Botões de Prev/Next (setas) podem ser um pouco diferentes se quiser */
+.page-btn.nav-special {
+    border-radius: 12px; /* Quadrado arredondado */
+    width: auto;
+    padding: 0 20px;
+}
+
+/* Quando o botão está desabilitado (ex: anterior na pag 1) */
+.page-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+    border-color: transparent;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-left-color: #00d4ff; /* Sua cor neon */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- FOOTER --- */
+.main-footer {
+    background-color: #0b1120; /* Um tom mais escuro que o fundo do site */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil no topo */
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    margin-top: 4rem; /* Afasta o footer do conteúdo principal */
+    font-family: 'Outfit', sans-serif;
+    color: #94a3b8; /* Cor cinza claro para texto secundário */
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr; /* Coluna do logo é maior */
+    gap: 2rem;
+}
+
+/* Estilo do Logo no Footer */
+.footer-logo {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #eab308; /* Dourado */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.footer-logo .blue-text {
+    color: #00d4ff; /* Azul Neon */
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+}
+
+.footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 300px;
+}
+
+/* Títulos das seções */
+.footer-section h3 {
+    color: #fff;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Container dos Links Sociais */
+.footer-links {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 1.5rem; /* Espaço entre os ícones */
+    margin: 1rem 0;
+}
+
+/* Estilo do Link (O container do ícone) */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #94a3b8; /* Cor padrão cinza claro */
+    transition: all 0.3s ease;
+}
+
+/* Estilo do SVG dentro do Link */
+.social-icon svg {
+    width: 28px;  /* Tamanho do ícone */
+    height: 28px;
+    fill: currentColor; /* ISSO É O SEGREDO: Pega a cor do texto do pai */
+}
+
+/* Efeito Hover (Ao passar o mouse) */
+.social-icon:hover {
+    color: #00d4ff; /* Muda a cor para o azul neon */
+    transform: translateY(-3px) scale(1.1); /* Sobe um pouco e aumenta */
+    filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5)); /* Brilho neon */
+}
+
+.footer-link:hover {
+    color: #00d4ff; /* Fica azul ao passar o mouse */
+    transform: translateX(5px); /* Move levemente para a direita */
+}
+
+.footer-link .material-icons-round {
+    font-size: 1.2rem;
+}
+
+/* Área do TMDB */
+.tmdb-area p {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.tmdb-logo {
+    width: 100px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.tmdb-logo:hover {
+    opacity: 1;
+}
+
+/* Rodapé inferior (Copyright) */
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+}
+.reservado{
+    margin-left: 16%;
+}
+
+
+
+
+/* Responsivo para celular */
+@media (max-width: 600px) {
+    .section-header-action {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .shuffle-btn span:last-child {
+        display: none; /* Esconde o texto "Aleatório" no celular, deixa só o ícone */
+    }
+
+        .modal-header-img { height: 200px; }
+    .modal-poster-wrapper { width: 90px; bottom: -30px; }
+    .modal-body { padding: 50px 20px 30px; }
+    .modal-body h2 { font-size: 1.5rem; }
+}
+
+/* Pequeno ajuste no mobile para não ficar bagunçado */
+
+/* --- Ajuste Mobile (Touch) --- */
+/* No celular não tem hover, então deixamos o texto sempre visível ou fixo */
+@media (max-width: 768px) {
+    .movie-card .movie-info {
+        transform: translateY(0);
+        /* Sempre visível no mobile */
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        padding-bottom: 10px;
+    }
+
+    .movie-card .rating-badge {
+        font-size: 0.7rem;
+        padding: 2px 6px;
+    }
+
+    .overlay {
+        display: none;
+        /* Esconde botão de play gigante no mobile para ver a arte */
+    }
+    .section-header-action {
+        margin-top: 15px;
+        justify-content: flex-start;
+    }
+     .footer-content {
+        grid-template-columns: 1fr; /* Vira uma coluna só */
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .footer-desc {
+        margin: 0 auto; /* Centraliza o texto */
+    }
+
+    .footer-link {
+        justify-content: center; /* Centraliza os links */
+    }
+}
+
+/* --- CARROSSEL INFINITO (Versão Melhorada) --- */
+.infinite-carousel-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    /* Aumentei a margem para separar bem do topo */
+    margin-bottom: 4rem;
+    padding: 20px 0;
+    /* Espaço extra para a sombra e o hover não cortarem */
+
+    /* Fade nas pontas */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.carousel-track {
+    display: flex;
+    /* Aumentado de 15px para 40px (Mais espaçamento) */
+    gap: 40px;
+    width: max-content;
+
+    /* Aumentei o tempo para 80s porque a trilha ficou mais longa */
+    animation: scrollLoop 80s linear infinite;
+}
+
+/* Pausa suave ao passar o mouse */
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+.carousel-card {
+    /* Aumentado de 140px para 220px (Filmes bem maiores) */
+    width: 400px;
+    border-radius: 16px;
+    /* Borda um pouco mais redonda */
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s ease;
+    /* Transição mais suave */
+    cursor: pointer;
+    flex-shrink: 0;
+
+    /* Sombra para destacar do fundo */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-card:hover {
+    transform: scale(1.1) translateY(-5px);
+    /* Cresce e sobe um pouquinho */
+    z-index: 2;
+    border: 2px solid var(--gold);
+    /* Borda dourada mais visível */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    /* Sombra forte no hover */
+}
+
+.carousel-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    aspect-ratio: 2/3;
+    /* Filtro levemente escuro que clareia ao passar o mouse */
+    filter: brightness(0.85);
+    transition: filter 0.4s ease;
+}
+
+.carousel-card:hover img {
+    filter: brightness(1.1);
+    /* Brilha quando passa o mouse */
+}
+
+@keyframes scrollLoop {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        /* Atenção: Se o carrossel "pular" no final, ajustaremos o JS */
+        transform: translateX(-50%);
+    }
+}
+
+/* --- Ajuste Mobile --- */
+@media (max-width: 768px) {
+    .infinite-carousel-wrapper {
+        margin-bottom: 2rem;
+    }
+
+    .carousel-card {
+        /* No celular reduzimos um pouco, mas ainda maior que antes */
+        width: 140px;
+    }
+
+    .carousel-track {
+        gap: 20px;
+        /* Espaço menor no mobile para caber mais */
+        animation-duration: 40s;
+        /* Mais rápido no mobile */
+    }
+}
+
+/* --- RESPONSIVIDADE (Mobile) --- */
+@media (max-width: 768px) {
+    .logo-neon {
+        font-size: 3.5rem;
+    }
+
+    .search-bar {
+        padding: 5px;
+    }
+
+    /* Agora mostramos o select no mobile, mas de forma ajustada */
+    .filters {
+        display: none;
+    }
+
+    .search-btn {
+        margin-left: auto;
+    }
+
+    .content-container {
+        padding: 1rem;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .movie-info h3 {
+        font-size: 0.9rem;
+    }
+}

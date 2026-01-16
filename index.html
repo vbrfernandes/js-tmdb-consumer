@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnCine - Premium Movies</title>
+    <meta property="og:title" content="OnCine - Premium Movies">
+    <meta property="og:description"
+        content="Onde o cinema nunca para. Busque seus filmes favoritos.">
+    <meta property="og:image" content="URL_DE_UMA_IMAGEM_DO_SEU_SITE.jpg">
+    <meta property="og:url" content="URL_DO_SEU_SITE_NO_GITHUB_PAGES">
+    <link rel="icon" type="image/png" href="caminho-do-icone.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-glow"></div>
+    <header class="hero">
+        <div class="logo-container">
+            <h1 class="logo-neon">
+                <a href="index.html"><span class="gold-part">On</span></a><a
+                    href="index.html"><span class="blue-part"
+                        id="cine-neon">Cine</span></a>
+            </h1>
+        </div>
+        <p class="tagline">Onde o cinema nunca para.</p>
+        <div class="search-wrapper">
+            <div class="search-bar">
+                <span class="material-icons-round search-icon">search</span>
+                <input type="text" id="search"
+                    placeholder="Busque filmes, séries..." autocomplete="off">
+                <div class="filters">
+                    <div class="select-wrapper">
+                        <select class="filter-select" id="genreSelect">
+                            <option value="" disabled selected>Gênero</option>
+                        </select>
+                        <span
+                            class="material-icons-round arrow-icon">expand_more</span>
+                    </div>
+                    <button class="search-btn">
+                        <span class="material-icons-round">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content-container">
+        <div class="infinite-carousel-wrapper">
+            <div class="carousel-track" id="carouselTrack">
+            </div>
+        </div>
+        <div class="section-header">
+            <div class="section-header-action" id="quickActions">
+                <button id="shuffleBtn" class="shuffle-btn"
+                    title="Sortear qualquer filme">
+                    <span class="material-icons-round spin-icon">shuffle</span>
+                    <span>Aleatório</span>
+                </button>
+            </div>
+        </div>
+        <div id="loading" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+        </div>
+        <main id="main" class="movie-grid">
+            <div class="movie-card">
+                <div class="poster-container">
+                    <div class="rating-badge">
+                        <span class="material-icons-round star-icon">star</span>
+                        8.9
+                    </div>
+                    <img src="https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg"
+                        alt="Oppenheimer">
+                    <div class="overlay">
+                        <button class="play-btn"><span
+                                class="material-icons-round">play_arrow</span></button>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <h3>Oppenheimer</h3>
+                    <div class="meta">
+                        <span>2023 • Drama</span>
+                        <span class="duration">3h 00m</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="poster-container">
+                    <div class="rating-badge green-badge">
+                        <span class="material-icons-round star-icon">star</span>
+                        9.0
+                    </div>
+                    <img src="https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg"
+                        alt="Barbie">
+                    <div class="overlay">
+                        <button class="play-btn"><span
+                                class="material-icons-round">play_arrow</span></button>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <h3>Barbie</h3>
+                    <div class="meta">
+                        <span>2023 • Comédia</span>
+                        <span class="duration">1h 54m</span>
+                    </div>
+                </div>
+            </div>
+            <div class="movie-card">
+                <div class="poster-container">
+                    <div class="rating-badge">
+                        <span class="material-icons-round star-icon">star</span>
+                        8.2
+                    </div>
+                    <img src="https://image.tmdb.org/t/p/w500/1E5baAaEse26fej7uHkjJDveYoW.jpg"
+                        alt="Wonka">
+                    <div class="overlay">
+                        <button class="play-btn"><span
+                                class="material-icons-round">play_arrow</span></button>
+                    </div>
+                </div>
+                <div class="movie-info">
+                    <h3>Wonka</h3>
+                    <div class="meta">
+                        <span>2023 • Fantasia</span>
+                        <span class="duration">1h 56m</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="pagination" id="pagination">
+        </div>
+    </div>
+    <div id="movieModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header-img">
+                <div class="modal-poster-wrapper">
+                    <img id="modalPoster" src="" alt="Poster">
+                </div>
+            </div>
+            <div class="modal-body">
+                <h2 id="modalTitle">Titulo do Filme</h2>
+                <div class="modal-meta-row">
+                    <span class="modal-badge" id="modalRating">⭐ 0.0</span>
+                    <span class="modal-badge outline" id="modalDate">2024</span>
+                    <span class="modal-badge outline" id="modalLang">EN</span>
+                </div>
+                <p class="modal-tagline" id="modalGenre">Gêneros</p>
+                <h3 class="modal-subtitle">Sinopse</h3>
+                <p id="modalOverview" class="modal-desc">Descrição do filme...
+                </p>
+            </div>
+        </div>
+    </div>
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h2>On<span>Cine</span></h2>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/vbrfernandes" target="_blank"
+                    class="social-icon" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/vitor-barros-fernandes/"
+                    target="_blank" class="social-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                    </svg>
+                </a>
+            </div>
+            <div class="tmdb-credit">
+                <p>Dados fornecidos por</p>
+                <a href="https://www.themoviedb.org/" target="_blank">
+                    <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg"
+                        alt="TMDB Logo" width="100">
+                </a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p class="reservado">&copy; 2024 OnCine. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
